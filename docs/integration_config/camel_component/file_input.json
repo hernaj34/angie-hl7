@@ -1,0 +1,16 @@
+{
+    "id": "45476a5a-edf1-4d0c-ae67-8bd3ac1c0931",
+    "package_code": "angie.core",
+    "package_version": "1.0.0",
+    "document_type": "camel_component",
+    "code": "file_input",
+    "data": {
+        "id": "45476a5a-edf1-4d0c-ae67-8bd3ac1c0931",
+        "code": "file_input",
+        "name": "File Input",
+        "options": "{\n    \"out_format\": \"string\",\n    \"directory\": \"string\",\n    \"type\": \"string\",\n    \"query_params\": \"array\"\n}",
+        "package_code": "angie.core",
+        "xml_template": "<route  id=\"{{source}}\">\n    <from uri=\"{{type}}:{{directory}}{{querystring query_params}}\"/>\n    <multicast>\n        {{#each target}}\n        <to uri=\"direct:{{this}}\"/>\n        {{/each}}\n    </multicast>\n</route>",
+        "package_version": "1.0.0"
+    }
+}

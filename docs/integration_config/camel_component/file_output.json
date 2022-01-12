@@ -1,0 +1,16 @@
+{
+    "id": "b932804f-f946-46f8-9ab1-4ed3c13b0794",
+    "package_code": "angie.core",
+    "package_version": "1.0.0",
+    "document_type": "camel_component",
+    "code": "file_output",
+    "data": {
+        "id": "b932804f-f946-46f8-9ab1-4ed3c13b0794",
+        "code": "file_output",
+        "name": "File Output",
+        "options": "{\n    \"out_format\": \"string\",\n    \"directory\": \"string\",\n    \"type\": \"string\",\n    \"query_params\": \"array\",\n    \"allowNullBody\": \"boolean\",\n    \"action_after_processing\": \"string\"\n}",
+        "package_code": "angie.core",
+        "xml_template": "<route  id=\"{{source}}\">\n    <from uri=\"direct:{{source}}\"/>\n    <to uri=\"{{type}}://{{directory}}{{querystring query_params}}{{allowNullBody}}\"/>\n</route>",
+        "package_version": "1.0.0"
+    }
+}

@@ -1,0 +1,189 @@
+{
+    "id": "543955a4-cfc3-4fcd-b1ea-9e35219bafef",
+    "name": "Test",
+    "data": {
+        "id": "543955a4-cfc3-4fcd-b1ea-9e35219bafef",
+        "name": "Test",
+        "description": "Test",
+        "created_on": "2022-01-12T11:25:32.544Z",
+        "channels": [
+            {
+                "name": "historical_baboon",
+                "id": "8614cff2-5202-4ade-8d85-e05be7a87284",
+                "created_on": "2022-01-12T11:32:59.832Z",
+                "version": 8,
+                "nodes": [
+                    {
+                        "id": "107bc67a-20c0-45c4-a337-e186ea4825ba",
+                        "type_id": "groovy_visual_editor",
+                        "position": {
+                            "x": 527,
+                            "y": 124
+                        },
+                        "data": {
+                            "script": {
+                                "contextCode": "angie.core.camel_context_groovy",
+                                "contextMember": {
+                                    "memberType": "context",
+                                    "code": "context",
+                                    "name": "context",
+                                    "type": {
+                                        "type": "object",
+                                        "objectCode": "angie.core.camel_context"
+                                    }
+                                },
+                                "language": "groovy",
+                                "mainStatement": {
+                                    "id": "main-block",
+                                    "type": "block",
+                                    "main": true,
+                                    "variables": {},
+                                    "nestedStatements": [
+                                        {
+                                            "id": "start",
+                                            "type": "start",
+                                            "name": "Inicio"
+                                        },
+                                        {
+                                            "id": "45b52cb9-2d56-436b-a461-502ec949d02f",
+                                            "type": "expressionGroup",
+                                            "name": "Nuevo grupo de expresiones",
+                                            "expressions": [
+                                                [
+                                                    {
+                                                        "memberType": "context",
+                                                        "code": "context",
+                                                        "name": "context",
+                                                        "type": {
+                                                            "type": "object",
+                                                            "objectCode": "angie.core.camel_context"
+                                                        }
+                                                    },
+                                                    {
+                                                        "memberType": "property",
+                                                        "code": "exchange",
+                                                        "name": "Exchange",
+                                                        "type": {
+                                                            "type": "object",
+                                                            "objectCode": "angie.core.camel_exchange"
+                                                        },
+                                                        "complexityLevel": 1
+                                                    },
+                                                    {
+                                                        "memberType": "method",
+                                                        "id": 22457,
+                                                        "code": "exchangeSetBody",
+                                                        "name": "Set body",
+                                                        "type": {
+                                                            "type": "void"
+                                                        },
+                                                        "name_": "Test CLONED",
+                                                        "isActive": true,
+                                                        "language": "groovy",
+                                                        "parentType": {
+                                                            "type": "object",
+                                                            "objectCode": "angie.core.camel_exchange"
+                                                        },
+                                                        "sourceCode": "self.getIn().setBody(params.body);",
+                                                        "description": "",
+                                                        "package_code": "angie.core",
+                                                        "paramMembers": [
+                                                            {
+                                                                "code": "body",
+                                                                "name": "Cuerpo",
+                                                                "type": {
+                                                                    "type": "string"
+                                                                },
+                                                                "required": false
+                                                            }
+                                                        ],
+                                                        "renderTemplate": "Modificar cuerpo {{body}}",
+                                                        "complexityLevel": 1,
+                                                        "package_version": "1.0.0",
+                                                        "sourceCodeForBinaryOperator": "",
+                                                        "params": {
+                                                            "body": "Hello world!!"
+                                                        }
+                                                    }
+                                                ]
+                                            ]
+                                        },
+                                        {
+                                            "id": "end",
+                                            "type": "end",
+                                            "name": "Fin"
+                                        }
+                                    ]
+                                }
+                            },
+                            "label": "Visual Groovy Code",
+                            "beforeSave": "generateCode",
+                            "code": "import com.github.mustachejava.DefaultMustacheFactory;\nimport com.github.mustachejava.Mustache;\nimport java.io.StringReader;\nimport java.io.StringWriter;\nimport java.io.Writer;\n\n// Code preparation\ndef context = [exchange: exchange, request: request, response: response, properties: properties, variables: [:]];\ndef nestedSet( variables, variablePath, Object value){\n    def index = 0\n    def currentVariable = variables\n    for (member in variablePath){\n        if (index == variablePath.size() - 1) {\n            currentVariable[member] = value\n        }else{\n            if (!currentVariable.containsKey(member)){\n                currentVariable[member] = [:]\n            }\n            currentVariable = currentVariable[member]\n        }\n        index++\n    }\n}\n\ndef resolveTemplate(String template, Object context){\n    Writer writer = new StringWriter();\n    DefaultMustacheFactory mf = new DefaultMustacheFactory();\n    mf.compile(new StringReader(template),\"test\",\"#{\",\"}\").execute(writer,context);\n    return writer.toString();\n}\n\n// Functions\n\ndef exchangeSetBody(self, options) {\n    context = options.context;\n    params = options.params;\n    variablePath = options.variablePath;\n    self.getIn().setBody(params.body);\n}\n\n// Start\n\n// Nuevo grupo de expresiones\nexchangeSetBody(context?.exchange, [ params: [\"body\": \"Hello world!!\"], context: context]);\n\n// End"
+                        },
+                        "links": [
+                            {
+                                "node_id": "8655c03f-d1a2-41b6-ad7c-fa72e7dd3412",
+                                "handle": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "6de988ee-316c-4ad5-beec-414ddd4bfa30",
+                        "type_id": "http_input",
+                        "position": {
+                            "x": 190,
+                            "y": 107
+                        },
+                        "data": {
+                            "label": "HTTP Input",
+                            "out_format": "raw",
+                            "protocol": "jetty:http",
+                            "hostname": "0.0.0.0",
+                            "path": "/test",
+                            "port": 8888
+                        },
+                        "links": [
+                            {
+                                "node_id": "107bc67a-20c0-45c4-a337-e186ea4825ba",
+                                "handle": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "8655c03f-d1a2-41b6-ad7c-fa72e7dd3412",
+                        "type_id": "log",
+                        "position": {
+                            "x": 819,
+                            "y": 129
+                        },
+                        "data": {
+                            "label": "Log",
+                            "name": "debug"
+                        },
+                        "links": []
+                    }
+                ],
+                "enabled": true,
+                "status": "UNDEPLOYED",
+                "messages_total": 0,
+                "messages_error": 0,
+                "messages_sent": 0,
+                "last_updated": "2022-01-12T12:00:22.898Z",
+                "last_deployed_route": "<routes xmlns=\"http://camel.apache.org/schema/spring\"><route id=\"107bc67a-20c0-45c4-a337-e186ea4825ba\">\n    <from uri=\"direct:107bc67a-20c0-45c4-a337-e186ea4825ba\"/>\n    <script>\n        <groovy>\n<![CDATA[import com.github.mustachejava.DefaultMustacheFactory;\nimport com.github.mustachejava.Mustache;\nimport java.io.StringReader;\nimport java.io.StringWriter;\nimport java.io.Writer;\n\n// Code preparation\ndef context = [exchange: exchange, request: request, response: response, properties: properties, variables: [:]];\ndef nestedSet( variables, variablePath, Object value){\n    def index = 0\n    def currentVariable = variables\n    for (member in variablePath){\n        if (index == variablePath.size() - 1) {\n            currentVariable[member] = value\n        }else{\n            if (!currentVariable.containsKey(member)){\n                currentVariable[member] = [:]\n            }\n            currentVariable = currentVariable[member]\n        }\n        index++\n    }\n}\n\ndef resolveTemplate(String template, Object context){\n    Writer writer = new StringWriter();\n    DefaultMustacheFactory mf = new DefaultMustacheFactory();\n    mf.compile(new StringReader(template),\"test\",\"#{\",\"}\").execute(writer,context);\n    return writer.toString();\n}\n\n// Functions\n\ndef exchangeSetBody(self, options) {\n    context = options.context;\n    params = options.params;\n    variablePath = options.variablePath;\n    self.getIn().setBody(params.body);\n}\n\n// Start\n\n// Nuevo grupo de expresiones\nexchangeSetBody(context?.exchange, [ params: [\"body\": \"Hello world!!\"], context: context]);\n\n// End]]>\n        </groovy>\n    </script>\n    <multicast>\n        <to uri=\"direct:8655c03f-d1a2-41b6-ad7c-fa72e7dd3412\"/>\n    </multicast>\n</route><route  id=\"6de988ee-316c-4ad5-beec-414ddd4bfa30\">\n    <from uri=\"jetty:http://0.0.0.0:8888/test\"/>\n    <multicast>\n        <to uri=\"direct:107bc67a-20c0-45c4-a337-e186ea4825ba\"/>\n    </multicast>\n</route><route  id=\"8655c03f-d1a2-41b6-ad7c-fa72e7dd3412\">\n    <from uri=\"direct:8655c03f-d1a2-41b6-ad7c-fa72e7dd3412\"/>\n    <to uri=\"log:debug\"/>\n</route></routes>"
+            }
+        ],
+        "package_code": "angie.core",
+        "package_version": "1.0.0",
+        "last_updated": "2022-01-12T12:00:59.442Z",
+        "deployment_config": {
+            "id": "543955a4-cfc3-4fcd-b1ea-9e35219bafef",
+            "last_deployment_date": "2022-01-12T12:00:59.445Z",
+            "deployment_config": null,
+            "organization_id": "73954ca9-2c56-48fe-b8c5-70ddd6659857",
+            "enabled": true,
+            "channel_config": {}
+        }
+    },
+    "package_code": "angie.core",
+    "package_version": "1.0.0"
+}

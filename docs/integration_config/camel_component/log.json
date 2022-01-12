@@ -1,0 +1,16 @@
+{
+    "id": "5eb79d2d-5b7d-4666-83b2-9c0abb80f569",
+    "package_code": "angie.core",
+    "package_version": "1.0.0",
+    "document_type": "camel_component",
+    "code": "log",
+    "data": {
+        "id": "5eb79d2d-5b7d-4666-83b2-9c0abb80f569",
+        "code": "log",
+        "name": "Log",
+        "options": "{\n    \"name\": \"string\"\n}",
+        "package_code": "angie.core",
+        "xml_template": "<route  id=\"{{source}}\">\n    <from uri=\"direct:{{source}}\"/>\n    <to uri=\"log:{{name}}\"/>\n</route>",
+        "package_version": "1.0.0"
+    }
+}
